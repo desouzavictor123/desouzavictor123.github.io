@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LGS Painting Services</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      color: #1d2b4f;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 20px;
+      border-bottom: 2px solid #5d7cff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #3f5eff;
+    }
+
+    .nav-links a {
+      color: #1d2b4f;
+      text-decoration: none;
+      margin-left: 18px;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #5d7cff, #2d45b8);
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: white;
+      color: #2d45b8;
+      padding: 14px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 6px;
+    }
+
+    section {
+      padding: 70px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      color: #2d45b8;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #555;
+      font-size: 18px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: #f3f6ff;
+      border: 2px solid #dce5ff;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 10px 25px rgba(45, 69, 184, 0.12);
+    }
+
+    .card h3 {
+      color: #2d45b8;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 16px;
+    }
+
+    .about {
+      background: #f3f6ff;
+    }
+
+    .about-box {
+      background: white;
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 10px 25px rgba(45, 69, 184, 0.12);
+      text-align: center;
+    }
+
+    .about-box h2 {
+      color: #2d45b8;
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .about-box p {
+      color: #555;
+      font-size: 18px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #5d7cff, #2d45b8);
+      color: white;
+      text-align: center;
+      border-radius: 22px;
+      padding: 45px 25px;
+    }
+
+    .contact-card h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    footer {
+      background: #1d2b4f;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media (max-width: 850px) {
+      nav {
+        flex-direction: column;
+      }
+
+      .nav-links a {
+        margin: 8px;
+        display: inline-block;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">LGS Painting Services</div>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>LGS Painting Services</h1>
+    <p>Professional painting, refinishing, and exterior cleaning services with a clean iris blue and white finish.</p>
+    <a href="#contact" class="btn">Get a Free Estimate</a>
+    <a href="#services" class="btn">View Services</a>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Clean work, sharp finishes, and reliable service for your home or business.</p>
+      </div>
+
+      <div class="services">
+        <div class="card">
+          <h3>Interior & Exterior Painting</h3>
+          <p>Professional painting for walls, trim, siding, doors, and more.</p>
+        </div>
+
+        <div class="card">
+          <h3>Power Washing</h3>
+          <p>Remove dirt, grime, and buildup from siding, decks, patios, and outdoor surfaces.</p>
+        </div>
+
+        <div class="card">
+          <h3>Deck Staining</h3>
+          <p>Refresh and protect your deck with clean, long-lasting stain finishes.</p>
+        </div>
+
+        <div class="card">
+          <h3>Wallpaper Removal</h3>
+          <p>Careful wallpaper removal and wall prep for a smooth painted finish.</p>
+        </div>
+
+        <div class="card">
+          <h3>Cabinet Refinishing</h3>
+          <p>Upgrade your kitchen, bathroom, or storage cabinets with a fresh new look.</p>
+        </div>
+
+        <div class="card">
+          <h3>Surface Prep & Touch-Ups</h3>
+          <p>Sanding, patching, and detailed touch-ups to make every job look complete.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-box">
+        <h2>Quality You Can See</h2>
+        <p>LGS Painting Services focuses on clean prep work, smooth coats, sharp lines, and dependable service from start to finish.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <h2>Contact Us</h2>
+        <p>Ready to start your next painting project?</p>
+        <a href="tel:0000000000" class="btn">Call Now</a>
+        <a href="mailto:youremail@example.com" class="btn">Email Us</a>
+        <p style="font-size: 14px; margin-top: 18px;">Replace the phone number and email with your real contact information.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 LGS Painting Services. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
