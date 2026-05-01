@@ -4,512 +4,653 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LGS Painting Services</title>
+  <link rel="icon" href="hero.jpg">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    :root{
+      --blue:#0b63ce;
+      --blue-dark:#073b84;
+      --navy:#071b35;
+      --light:#f4f8ff;
+      --white:#ffffff;
+      --text:#16243d;
+      --muted:#5f6b7a;
+      --border:#d9e6f8;
+      --shadow:0 12px 32px rgba(7,27,53,.10);
     }
 
-    :root {
-      --blue: #0057c8;
-      --dark-blue: #061b3f;
-      --light-blue: #eef5ff;
-      --white: #ffffff;
-      --gray: #5f6b7a;
-      --border: #dbe7ff;
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--white);
+      color:var(--text);
+      line-height:1.6;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--white);
-      color: var(--dark-blue);
-      line-height: 1.6;
+    header{
+      background:var(--white);
+      border-bottom:1px solid var(--border);
+      position:sticky;
+      top:0;
+      z-index:100;
     }
 
-    header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    nav{
+      max-width:1180px;
+      margin:auto;
+      padding:14px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
     }
 
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 25px;
+    .logo-wrap{
+      display:flex;
+      align-items:center;
+      gap:12px;
     }
 
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .logo-wrap img{
+      height:64px;
+      width:auto;
+      display:block;
     }
 
-    .logo-wrap img {
-      height: 72px;
-      width: auto;
-      display: block;
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
+    .nav-links a{
+      color:var(--navy);
+      text-decoration:none;
+      font-size:14px;
+      font-weight:700;
     }
 
-    .nav-links a {
-      color: var(--dark-blue);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: .4px;
-      text-transform: uppercase;
+    .nav-links a:hover{color:var(--blue)}
+
+    .phone-btn{
+      background:var(--blue);
+      color:white!important;
+      padding:11px 16px;
+      border-radius:8px;
     }
 
-    .nav-links a:hover {
-      color: var(--blue);
+    .hero{
+      background:linear-gradient(135deg,#ffffff 0%,#f4f8ff 58%,#e7f1ff 100%);
+      padding:90px 22px;
     }
 
-    .phone-btn {
-      background: var(--blue);
-      color: white !important;
-      padding: 12px 18px;
-      border-radius: 7px;
-      box-shadow: 0 8px 18px rgba(0, 87, 200, 0.24);
+    .hero-inner{
+      max-width:1180px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      align-items:center;
+      gap:48px;
     }
 
-    .hero {
-      min-height: 650px;
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      align-items: center;
-      background: linear-gradient(90deg, #ffffff 0%, #ffffff 42%, rgba(255,255,255,.82) 55%, rgba(255,255,255,.08) 100%),
-                  linear-gradient(135deg, #f7fbff, #dfeaff);
-      overflow: hidden;
-      position: relative;
+    .badge{
+      display:inline-block;
+      background:#e8f2ff;
+      color:var(--blue-dark);
+      border:1px solid #cfe0f7;
+      padding:8px 13px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:18px;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 55%;
-      height: 100%;
-      background: linear-gradient(135deg, #f7f9fc 0%, #ffffff 28%, #0a2e63 29%, #0a2e63 100%);
-      z-index: 0;
+    .hero h1{
+      font-size:clamp(42px,6vw,68px);
+      line-height:1.03;
+      color:var(--navy);
+      margin-bottom:18px;
+      letter-spacing:-1.5px;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      padding: 80px 24px 80px max(24px, calc((100vw - 1200px) / 2));
-      max-width: 620px;
+    .hero h1 span{color:var(--blue)}
+
+    .hero p{
+      font-size:20px;
+      color:#40506a;
+      max-width:560px;
+      margin-bottom:28px;
     }
 
-    .eyebrow {
-      color: var(--blue);
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      font-size: 14px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
+    .buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
     }
 
-    .hero h1 {
-      font-size: clamp(46px, 6vw, 78px);
-      line-height: .98;
-      color: var(--dark-blue);
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 22px;
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      padding:14px 20px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:15px;
+      transition:.2s;
+      border:2px solid transparent;
     }
 
-    .accent-line {
-      width: 95px;
-      height: 5px;
-      background: var(--blue);
-      margin-bottom: 24px;
-      border-radius: 99px;
+    .btn-primary{
+      background:var(--blue);
+      color:white;
+      border-color:var(--blue);
     }
 
-    .hero p {
-      font-size: 21px;
-      color: #263b5e;
-      max-width: 470px;
-      margin-bottom: 30px;
+    .btn-outline{
+      background:white;
+      color:var(--blue);
+      border-color:var(--blue);
     }
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
+    .btn:hover{transform:translateY(-2px)}
+
+    .hero-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      padding:28px;
     }
 
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      padding: 15px 22px;
-      border-radius: 7px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .3px;
-      font-size: 14px;
-      transition: .2s;
+    .hero-card-top{
+      min-height:260px;
+      border-radius:16px;
+      background:linear-gradient(135deg,#0b63ce,#071b35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      text-align:center;
+      padding:28px;
+      margin-bottom:22px;
     }
 
-    .btn-primary {
-      background: var(--blue);
-      color: white;
-      border: 2px solid var(--blue);
-      box-shadow: 0 10px 22px rgba(0, 87, 200, .24);
+    .hero-card-top h3{
+      font-size:30px;
+      line-height:1.15;
     }
 
-    .btn-outline {
-      background: white;
-      color: var(--blue);
-      border: 2px solid var(--blue);
+    .hero-card ul{
+      list-style:none;
+      display:grid;
+      gap:10px;
+      color:var(--muted);
+      font-size:16px;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
+    .hero-card li strong{color:var(--navy)}
+
+    .trust-row{
+      background:white;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      padding:24px 22px;
     }
 
-    .hero-visual {
-      position: relative;
-      z-index: 1;
-      min-height: 650px;
-      display: flex;
-      align-items: stretch;
-      justify-content: flex-end;
-      padding-left: 20px;
+    .trust-mini{
+      max-width:1180px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
     }
 
-    .blue-room {
-      width: 100%;
-      min-height: 650px;
-      background: linear-gradient(135deg, #123a75, #061b3f);
-      position: relative;
-      overflow: hidden;
+    .trust-mini div{
+      background:var(--light);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:18px;
+      text-align:center;
+      font-weight:700;
+      color:var(--navy);
     }
 
-    .blue-room::before {
-      content: "";
-      position: absolute;
-      inset: 60px 50px;
-      border: 2px solid rgba(255,255,255,.18);
-      box-shadow: inset 0 0 0 16px rgba(255,255,255,.04);
+    section{padding:78px 22px}
+    .container{max-width:1180px;margin:auto}
+
+    .section-title{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 44px;
     }
 
-    .blue-room::after {
-      content: "Professional Finish";
-      position: absolute;
-      bottom: 45px;
-      right: 45px;
-      background: rgba(255,255,255,.92);
-      color: var(--dark-blue);
-      padding: 18px 22px;
-      border-radius: 12px;
-      font-weight: 900;
-      box-shadow: 0 18px 35px rgba(0,0,0,.18);
+    .section-title span{
+      color:var(--blue);
+      font-size:14px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:1px;
     }
 
-    section {
-      padding: 80px 24px;
+    .section-title h2{
+      font-size:clamp(32px,5vw,46px);
+      line-height:1.12;
+      color:var(--navy);
+      margin:10px 0;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
+    .section-title p{color:var(--muted);font-size:18px}
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:18px;
     }
 
-    .section-title {
-      text-align: center;
-      max-width: 750px;
-      margin: 0 auto 55px;
+    .service-card{
+      display:block;
+      cursor:pointer;
+      font-family:inherit;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:24px 18px;
+      text-align:center;
+      box-shadow:0 8px 24px rgba(7,27,53,.07);
+      transition:.2s;
+      color:inherit;
     }
 
-    .section-title span {
-      color: var(--blue);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-size: 14px;
+    .service-card:hover{
+      transform:translateY(-4px);
+      border-color:#a8c8f4;
+      box-shadow:0 14px 30px rgba(7,27,53,.11);
     }
 
-    .section-title h2 {
-      font-size: clamp(34px, 5vw, 48px);
-      line-height: 1.1;
-      margin: 12px 0 14px;
-      color: var(--dark-blue);
+    .icon{
+      width:58px;
+      height:58px;
+      margin:0 auto 14px;
+      border-radius:15px;
+      background:#eaf3ff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
     }
 
-    .section-title p {
-      color: var(--gray);
-      font-size: 18px;
+    .service-card h3{
+      font-size:17px;
+      color:var(--navy);
+      margin-bottom:8px;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .service-card p{
+      font-size:14px;
+      color:var(--muted);
     }
 
-    .service-card {
-      padding: 28px 20px;
-      text-align: center;
-      border-right: 1px solid var(--border);
+    .service-detail{
+      display:none;
+      background:var(--light);
+      padding:42px 22px;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
     }
 
-    .service-card:last-child {
-      border-right: none;
+    .service-detail.active{display:block}
+
+    .detail-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:28px;
+      box-shadow:var(--shadow);
     }
 
-    .icon {
-      font-size: 46px;
-      color: var(--blue);
-      margin-bottom: 12px;
+    .detail-card h2{
+      color:var(--navy);
+      font-size:32px;
+      margin-bottom:8px;
     }
 
-    .service-card h3 {
-      font-size: 18px;
-      color: var(--dark-blue);
-      margin-bottom: 8px;
+    .detail-card>p{
+      color:var(--muted);
+      font-size:17px;
+      margin-bottom:20px;
     }
 
-    .service-card p {
-      color: var(--gray);
-      font-size: 15px;
+    .photo-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-bottom:22px;
     }
 
-    .trust-strip {
-      background: linear-gradient(135deg, #061b3f, #004da8);
-      color: white;
-      padding: 45px 24px;
+    .photo-label{
+      color:var(--blue);
+      font-weight:800;
+      margin-bottom:8px;
     }
 
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
+    .photo-row img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+      border-radius:14px;
+      background:#dfeaff;
+      border:1px solid var(--border);
     }
 
-    .trust-item {
-      border-right: 1px solid rgba(255,255,255,.35);
-      padding-right: 24px;
+    .before-after{
+      background:white;
     }
 
-    .trust-item:last-child {
-      border-right: none;
+    .photo-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
     }
 
-    .trust-item h3 {
-      font-size: 17px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
+    .photo-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:20px;
+      box-shadow:var(--shadow);
     }
 
-    .trust-item p {
-      color: #dbeaff;
-      font-size: 15px;
+    .photo-card h3{
+      color:var(--navy);
+      font-size:22px;
+      margin-top:4px;
     }
 
-    .contact {
-      background: var(--light-blue);
+    .about-strip{
+      background:var(--navy);
+      color:white;
+      padding:58px 22px;
     }
 
-    .contact-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 45px 30px;
-      text-align: center;
-      box-shadow: 0 18px 45px rgba(6, 27, 63, .1);
+    .about-grid{
+      max-width:1180px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:28px;
     }
 
-    .contact-card h2 {
-      font-size: 38px;
-      color: var(--dark-blue);
-      margin-bottom: 10px;
+    .about-item h3{font-size:18px;margin-bottom:8px}
+    .about-item p{color:#cfe0f4;font-size:15px}
+
+    .contact{
+      background:linear-gradient(135deg,#f4f8ff,#ffffff);
     }
 
-    .contact-card p {
-      color: var(--gray);
-      font-size: 18px;
-      margin-bottom: 24px;
+    .contact-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:44px 28px;
+      text-align:center;
+      box-shadow:var(--shadow);
+      max-width:840px;
+      margin:auto;
     }
 
-    footer {
-      padding: 24px;
-      background: white;
-      color: var(--dark-blue);
-      border-top: 1px solid var(--border);
-      text-align: center;
+    .contact-card h2{
+      font-size:38px;
+      color:var(--navy);
+      margin-bottom:10px;
     }
 
-    @media (max-width: 900px) {
-      nav {
-        flex-direction: column;
-      }
+    .contact-card p{
+      color:var(--muted);
+      font-size:18px;
+      margin-bottom:24px;
+    }
 
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 18px;
-      }
+    footer{
+      background:var(--navy);
+      color:white;
+      text-align:center;
+      padding:24px 18px;
+    }
 
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
+    .sticky-text-btn{
+      position:fixed;
+      bottom:18px;
+      right:18px;
+      background:var(--blue);
+      color:white;
+      padding:14px 20px;
+      border-radius:999px;
+      font-weight:800;
+      text-decoration:none;
+      box-shadow:0 12px 28px rgba(0,0,0,.22);
+      z-index:999;
+      display:none;
+    }
 
-      .hero::after,
-      .hero-visual {
-        display: none;
-      }
-
-      .hero-content {
-        padding: 70px 24px;
-        text-align: left;
-      }
-
-      .services-grid,
-      .trust-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .service-card,
-      .trust-item {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .logo-wrap img {
-        height: 64px;
-      }
+    @media(max-width:900px){
+      nav{flex-direction:column;padding:14px}
+      .logo-wrap img{height:70px}
+      .nav-links{flex-wrap:wrap;justify-content:center;gap:14px}
+      .phone-btn{width:100%;text-align:center}
+      .hero{padding:60px 22px}
+      .hero-inner{grid-template-columns:1fr;gap:32px}
+      .hero h1{font-size:44px}
+      .hero p{font-size:18px}
+      .hero-card-top{min-height:210px}
+      .trust-mini,.services-grid,.photo-grid,.about-grid{grid-template-columns:1fr}
+      .trust-mini{max-width:420px}
+      .photo-row{grid-template-columns:1fr}
+      .photo-row img{height:230px}
+      .sticky-text-btn{display:block}
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <nav>
-      <div class="logo-wrap">
-        <img src="hero.jpg" alt="LGS Painting Services Logo">
-      </div>
+<header>
+  <nav>
+    <div class="logo-wrap">
+      <img src="hero.jpg" alt="LGS Painting Services Logo">
+    </div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#before-after">Before & After</a>
+      <a href="#contact">Contact</a>
+      <a class="phone-btn" href="tel:2037942276">(203) 794-2276</a>
+    </div>
+  </nav>
+</header>
 
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-        <a class="phone-btn" href="tel:2037942276">(203) 794-2276</a>
-      </div>
-    </nav>
-  </header>
-
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <div class="eyebrow">Connecticut Painting Company</div>
-      <h1>LGS Painting Services</h1>
-      <div class="accent-line"></div>
-      <p>Professional painting and refinishing services with a clean, flawless finish.</p>
+<section id="home" class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="badge">Serving Bethel, Danbury, Brookfield, Newtown, Redding & surrounding Connecticut areas</div>
+      <h1>Professional <span>Painting</span> Services</h1>
+      <p>LGS Painting Services provides reliable interior painting, exterior painting, refinishing, and prep work for homes and businesses across Connecticut.</p>
       <div class="buttons">
-        <a href="#contact" class="btn btn-primary">Get a Free Estimate</a>
-        <a href="#services" class="btn btn-outline">Our Services</a>
+        <a href="#contact" class="btn btn-primary">Request Free Estimate</a>
+        <a href="#services" class="btn btn-outline">View Services</a>
       </div>
     </div>
 
-    <div class="hero-visual">
-      <div class="blue-room"></div>
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <h3>Clean Prep.<br>Sharp Lines.<br>Lasting Finish.</h3>
+      </div>
+      <ul>
+        <li><strong>Residential & Commercial</strong> painting services</li>
+        <li><strong>Professional prep work</strong> for a smoother finish</li>
+        <li><strong>Free estimates</strong> by call, text, or email</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="services">
-    <div class="container">
-      <div class="section-title">
-        <span>Our Services</span>
-        <h2>Quality Work. Lasting Results.</h2>
-        <p>Interior and exterior painting services for homes and businesses throughout Connecticut.</p>
-      </div>
+<section class="trust-row">
+  <div class="trust-mini">
+    <div>Free Estimates</div>
+    <div>Clean Job Sites</div>
+    <div>Quality Materials</div>
+    <div>Local Connecticut Service</div>
+  </div>
+</section>
 
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="icon">🏠</div>
-          <h3>Interior Painting</h3>
-          <p>Smooth, clean, professional finishes for your indoor spaces.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="icon">🏡</div>
-          <h3>Exterior Painting</h3>
-          <p>Protect and refresh your home’s exterior with quality paint and care.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="icon">🗄️</div>
-          <h3>Cabinet Refinishing</h3>
-          <p>Upgrade cabinets with a durable finish that looks brand new.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="icon">🧱</div>
-          <h3>Wallpaper Removal</h3>
-          <p>Remove old wallpaper and prep your walls for a clean finish.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="icon">🪵</div>
-          <h3>Deck Staining</h3>
-          <p>Refresh and protect decks with professional stain application.</p>
-        </div>
-      </div>
+<section id="services">
+  <div class="container">
+    <div class="section-title">
+      <span>Our Services</span>
+      <h2>Quality Work for Every Project</h2>
+      <p>Choose a service below to view before and after photos and request an estimate.</p>
     </div>
-  </section>
 
-  <div class="trust-strip">
-    <div class="container trust-grid">
-      <div class="trust-item">
-        <h3>Quality</h3>
-        <p>Premium materials and careful preparation on every project.</p>
+    <div class="services-grid">
+      <button class="service-card" onclick="toggleService('interior-panel')"><div class="icon">🏠</div><h3>Interior Painting</h3><p>Clean finishes for walls, trim, doors, and living spaces.</p></button>
+      <button class="service-card" onclick="toggleService('exterior-panel')"><div class="icon">🏡</div><h3>Exterior Painting</h3><p>Refresh and protect siding, doors, trim, and exterior surfaces.</p></button>
+      <button class="service-card" onclick="toggleService('cabinets-panel')"><div class="icon">🗄️</div><h3>Cabinet Refinishing</h3><p>Update kitchens and bathrooms with a fresh cabinet finish.</p></button>
+      <button class="service-card" onclick="toggleService('wallpaper-panel')"><div class="icon">📄</div><h3>Wallpaper Removal</h3><p>Wallpaper removal and wall prep for painting.</p></button>
+      <button class="service-card" onclick="toggleService('deck-panel')"><div class="icon">🪵</div><h3>Deck Staining</h3><p>Protect decks with professional staining and prep.</p></button>
+    </div>
+  </div>
+</section>
+
+<section class="service-detail" id="service-details">
+  <div class="container">
+    <div class="detail-card service-panel" id="interior-panel" style="display:none;">
+      <h2>Interior Painting</h2>
+      <p>View before and after photos, then request an estimate by text.</p>
+      <div class="photo-row">
+        <div><p class="photo-label">Before</p><img src="interior-before.jpg" alt="Interior painting before photo"></div>
+        <div><p class="photo-label">After</p><img src="interior-after.jpg" alt="Interior painting after photo"></div>
       </div>
-      <div class="trust-item">
-        <h3>Reliable</h3>
-        <p>On time, respectful, and focused on your satisfaction.</p>
+      <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20an%20Interior%20Painting%20estimate%20from%20LGS%20Painting%20Services.">Text for Interior Estimate</a>
+    </div>
+
+    <div class="detail-card service-panel" id="exterior-panel" style="display:none;">
+      <h2>Exterior Painting</h2>
+      <p>View before and after photos, then request an estimate by text.</p>
+      <div class="photo-row">
+        <div><p class="photo-label">Before</p><img src="exterior-before.jpg" alt="Exterior painting before photo"></div>
+        <div><p class="photo-label">After</p><img src="exterior-after.jpg" alt="Exterior painting after photo"></div>
       </div>
-      <div class="trust-item">
-        <h3>Experienced</h3>
-        <p>Skilled painting service for homes and businesses.</p>
+      <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20an%20Exterior%20Painting%20estimate%20from%20LGS%20Painting%20Services.">Text for Exterior Estimate</a>
+    </div>
+
+    <div class="detail-card service-panel" id="cabinets-panel" style="display:none;">
+      <h2>Cabinet Refinishing</h2>
+      <p>View before and after photos, then request an estimate by text.</p>
+      <div class="photo-row">
+        <div><p class="photo-label">Before</p><img src="cabinets-before.jpg" alt="Cabinet refinishing before photo"></div>
+        <div><p class="photo-label">After</p><img src="cabinets-after.jpg" alt="Cabinet refinishing after photo"></div>
       </div>
-      <div class="trust-item">
-        <h3>Connecticut</h3>
-        <p>Proudly serving customers across Connecticut.</p>
+      <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20Cabinet%20Refinishing%20estimate%20from%20LGS%20Painting%20Services.">Text for Cabinet Estimate</a>
+    </div>
+
+    <div class="detail-card service-panel" id="wallpaper-panel" style="display:none;">
+      <h2>Wallpaper Removal</h2>
+      <p>View before and after photos, then request an estimate by text.</p>
+      <div class="photo-row">
+        <div><p class="photo-label">Before</p><img src="wallpaper-before.jpg" alt="Wallpaper removal before photo"></div>
+        <div><p class="photo-label">After</p><img src="wallpaper-after.jpg" alt="Wallpaper removal after photo"></div>
+      </div>
+      <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20Wallpaper%20Removal%20estimate%20from%20LGS%20Painting%20Services.">Text for Wallpaper Estimate</a>
+    </div>
+
+    <div class="detail-card service-panel" id="deck-panel" style="display:none;">
+      <h2>Deck Staining</h2>
+      <p>View before and after photos, then request an estimate by text.</p>
+      <div class="photo-row">
+        <div><p class="photo-label">Before</p><img src="deck-before.jpg" alt="Deck staining before photo"></div>
+        <div><p class="photo-label">After</p><img src="deck-after.jpg" alt="Deck staining after photo"></div>
+      </div>
+      <a class="btn btn-primary" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20Deck%20Staining%20estimate%20from%20LGS%20Painting%20Services.">Text for Deck Estimate</a>
+    </div>
+  </div>
+</section>
+
+<section id="before-after" class="before-after">
+  <div class="container">
+    <div class="section-title">
+      <span>Before & After</span>
+      <h2>Project Transformations</h2>
+      <p>Add real project photos here to show customers the quality of your work.</p>
+    </div>
+
+    <div class="photo-grid">
+      <div class="photo-card">
+        <div class="photo-row">
+          <div><p class="photo-label">Before</p><img src="before1.jpg" alt="Before painting project"></div>
+          <div><p class="photo-label">After</p><img src="after1.jpg" alt="After painting project"></div>
+        </div>
+        <h3>Interior Painting Project</h3>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-row">
+          <div><p class="photo-label">Before</p><img src="before2.jpg" alt="Before painting project"></div>
+          <div><p class="photo-label">After</p><img src="after2.jpg" alt="After painting project"></div>
+        </div>
+        <h3>Exterior Painting Project</h3>
       </div>
     </div>
   </div>
+</section>
 
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="contact-card">
-        <h2>Request a Free Estimate</h2>
-        <p>Call, text, or email LGS Painting Services to get started.</p>
-        <a href="tel:2037942276" class="btn btn-primary">Call Now</a>
-        <a href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20quote%20from%20LGS%20Painting%20Services" class="btn btn-outline">Text for Estimate</a>
-        <a href="mailto:dasilvaleonan09@gmail.com" class="btn btn-outline">Email Us</a>
-      </div>
+<div class="about-strip">
+  <div class="about-grid">
+    <div class="about-item"><h3>Reliable Service</h3><p>Clear communication from start to finish.</p></div>
+    <div class="about-item"><h3>Careful Prep</h3><p>Proper prep work for smoother, longer-lasting results.</p></div>
+    <div class="about-item"><h3>Clean Finish</h3><p>Professional details, clean edges, and sharp results.</p></div>
+    <div class="about-item"><h3>Local Company</h3><p>Serving homeowners and businesses across Connecticut.</p></div>
+  </div>
+</div>
+
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-card">
+      <h2>Request a Free Estimate</h2>
+      <p>Call, text, or email LGS Painting Services to get started.</p>
+      <a href="tel:2037942276" class="btn btn-primary">Call Now</a>
+      <a href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20quote%20from%20LGS%20Painting%20Services" class="btn btn-outline">Text for Estimate</a>
+      <a href="mailto:dasilvaleonan09@gmail.com" class="btn btn-outline">Email Us</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2026 LGS Painting Services. Servicing Connecticut.</p>
-  </footer>
+<footer>
+  <p>© 2026 LGS Painting Services. Proudly serving Connecticut.</p>
+</footer>
+
+<a class="sticky-text-btn" href="sms:2037942276?body=Hi%2C%20I%E2%80%99d%20like%20a%20painting%20estimate%20from%20LGS%20Painting%20Services">Text for Estimate</a>
+
+<script>
+  let openService = null;
+
+  function toggleService(panelId){
+    const detailSection=document.getElementById('service-details');
+    const panels=document.querySelectorAll('.service-panel');
+    const selectedPanel=document.getElementById(panelId);
+
+    if(openService===panelId){
+      detailSection.classList.remove('active');
+      panels.forEach(panel=>panel.style.display='none');
+      openService=null;
+      return;
+    }
+
+    panels.forEach(panel=>panel.style.display='none');
+    selectedPanel.style.display='block';
+    detailSection.classList.add('active');
+    openService=panelId;
+    detailSection.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+</script>
 
 </body>
 </html>
