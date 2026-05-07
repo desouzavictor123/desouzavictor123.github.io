@@ -1,379 +1,854 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>LGS Painting Services</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{--iris:#5B6BE8;--iris-light:#7C8EF5;--iris-dark:#3A4BC7;--iris-pale:#E8EBFD;--white:#FFFFFF;--off-white:#F7F8FE;--dark:#1A1D3A;--mid:#4A4F72;--accent:#B8C0FF;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(91,107,232,0.12);}
-.logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--iris-dark);letter-spacing:-0.5px;}
-.logo span{color:var(--iris-light);}
-.nav-links{display:flex;gap:2.5rem;list-style:none;}
-.nav-links a{text-decoration:none;color:var(--mid);font-size:0.9rem;font-weight:500;transition:color 0.2s;}
-.nav-links a:hover{color:var(--iris);}
-.nav-cta{background:var(--iris);color:white!important;padding:0.6rem 1.4rem;border-radius:50px;transition:background 0.2s,transform 0.2s!important;}
-.nav-cta:hover{background:var(--iris-dark)!important;transform:translateY(-1px);}
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--dark);}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1A1D3A 0%,#2A2F6A 50%,#3A4BC7 100%);}
-.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.35;}
-.blob1{width:600px;height:600px;background:var(--iris-light);top:-100px;right:-100px;animation:float 8s ease-in-out infinite;}
-.blob2{width:400px;height:400px;background:var(--accent);bottom:-80px;left:10%;animation:float 10s ease-in-out infinite reverse;}
-.blob3{width:300px;height:300px;background:white;top:40%;right:20%;opacity:0.08;animation:float 6s ease-in-out infinite;}
-@keyframes float{0%,100%{transform:translateY(0px) scale(1);}50%{transform:translateY(-30px) scale(1.05);}}
-.drips{position:absolute;top:0;left:0;right:0;display:flex;gap:3%;padding:0 5%;pointer-events:none;}
-.drip{width:4px;background:linear-gradient(to bottom,rgba(255,255,255,0.3),transparent);border-radius:0 0 4px 4px;animation:drip-fall 3s ease-in-out infinite;}
-.drip:nth-child(1){height:80px;animation-delay:0s;}
-.drip:nth-child(2){height:120px;animation-delay:0.5s;}
-.drip:nth-child(3){height:60px;animation-delay:1s;}
-.drip:nth-child(4){height:100px;animation-delay:1.5s;}
-.drip:nth-child(5){height:90px;animation-delay:0.3s;}
-@keyframes drip-fall{0%{transform:scaleY(0);transform-origin:top;opacity:0;}40%{transform:scaleY(1);opacity:1;}70%{transform:scaleY(1);opacity:1;}100%{transform:scaleY(1);opacity:0;}}
-.hero-content{position:relative;z-index:2;padding:0 5%;max-width:760px;margin-top:80px;}
-.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:var(--accent);font-size:0.8rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:0.4rem 1rem;border-radius:50px;margin-bottom:1.5rem;animation:fadeUp 0.8s ease both;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:900;color:white;line-height:1.05;margin-bottom:1.5rem;animation:fadeUp 0.8s 0.15s ease both;}
-.hero h1 em{font-style:italic;color:var(--accent);}
-.hero p{font-size:1.15rem;color:rgba(255,255,255,0.72);line-height:1.75;max-width:520px;margin-bottom:2.5rem;font-weight:300;animation:fadeUp 0.8s 0.3s ease both;}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.8s 0.45s ease both;}
-.btn-primary{background:white;color:var(--iris-dark);padding:0.9rem 2.2rem;border-radius:50px;font-weight:600;font-size:0.95rem;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.2);}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.3);}
-.btn-outline{background:transparent;color:white;padding:0.9rem 2.2rem;border-radius:50px;font-weight:500;font-size:0.95rem;text-decoration:none;border:1.5px solid rgba(255,255,255,0.4);transition:border-color 0.2s,background 0.2s;}
-.btn-outline:hover{border-color:white;background:rgba(255,255,255,0.08);}
-.stats-bar{background:var(--iris);padding:2.5rem 5%;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
-.stat-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:white;}
-.stat-label{color:rgba(255,255,255,0.75);font-size:0.85rem;margin-top:0.2rem;}
-.services{padding:8rem 5%;background:var(--off-white);}
-.section-label{font-size:0.75rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--iris);margin-bottom:0.75rem;}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:var(--dark);line-height:1.15;margin-bottom:1rem;}
-.section-sub{color:var(--mid);font-size:1rem;line-height:1.7;max-width:500px;margin-bottom:4rem;font-weight:300;}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.service-card{background:white;border-radius:20px;padding:2.5rem 2rem;position:relative;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;border:1px solid rgba(91,107,232,0.08);}
-.service-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(91,107,232,0.15);}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--iris),var(--iris-light));transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
-.service-card:hover::before{transform:scaleX(1);}
-.service-icon{width:56px;height:56px;background:var(--iris-pale);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;transition:background 0.3s;}
-.service-card:hover .service-icon{background:var(--iris);}
-.service-card:hover .service-icon svg{stroke:white;}
-.service-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:0.6rem;}
-.service-desc{color:var(--mid);font-size:0.88rem;line-height:1.65;font-weight:300;}
-.service-hint{display:inline-flex;align-items:center;gap:0.4rem;margin-top:1rem;color:var(--iris);font-size:0.8rem;font-weight:500;}
-.cta-card{background:linear-gradient(135deg,#5B6BE8,#3A4BC7);border:none;}
-.cta-card .service-name{color:white;}
-.cta-card .service-desc{color:rgba(255,255,255,0.82);}
-.cta-card-btn{display:inline-block;margin-top:1.5rem;background:white;color:#3A4BC7;padding:0.6rem 1.4rem;border-radius:50px;font-size:0.85rem;font-weight:600;text-decoration:none;}
-.why{padding:8rem 5%;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
-.paint-swatch-stack{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.swatch{border-radius:20px;aspect-ratio:3/4;}
-.swatch-1{background:linear-gradient(160deg,#3A4BC7,#5B6BE8);}
-.swatch-2{background:linear-gradient(160deg,#7C8EF5,#B8C0FF);margin-top:2rem;}
-.swatch-3{background:linear-gradient(160deg,#1A1D3A,#2A2F6A);margin-top:-2rem;}
-.swatch-4{background:linear-gradient(160deg,#E8EBFD,#C5CCFA);}
-.why-points{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.5rem;}
-.why-point{display:flex;gap:1rem;align-items:flex-start;}
-.why-dot{width:10px;height:10px;background:var(--iris);border-radius:50%;margin-top:6px;flex-shrink:0;}
-.why-point-title{font-weight:600;color:var(--dark);margin-bottom:0.2rem;font-size:0.95rem;}
-.why-point-text{color:var(--mid);font-size:0.88rem;line-height:1.6;font-weight:300;}
-.testimonials{background:var(--dark);padding:8rem 5%;}
-.testimonials .section-label{color:var(--accent);}
-.testimonials .section-title{color:white;}
-.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
-.testimonial-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:2rem;transition:background 0.3s;}
-.testimonial-card:hover{background:rgba(255,255,255,0.1);}
-.stars{color:var(--accent);font-size:1rem;margin-bottom:1rem;letter-spacing:2px;}
-.testimonial-text{color:rgba(255,255,255,0.78);font-size:0.9rem;line-height:1.75;font-weight:300;margin-bottom:1.5rem;}
-.testimonial-author{display:flex;align-items:center;gap:0.75rem;}
-.author-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:white;}
-.author-name{color:white;font-weight:500;font-size:0.9rem;}
-.author-loc{color:rgba(255,255,255,0.45);font-size:0.78rem;margin-top:0.1rem;}
-.cta-section{padding:8rem 5%;text-align:center;background:var(--iris-pale);position:relative;overflow:hidden;}
-.cta-bg-circle{position:absolute;border-radius:50%;background:var(--iris);opacity:0.06;}
-.cta-c1{width:600px;height:600px;top:-200px;left:-100px;}
-.cta-c2{width:400px;height:400px;bottom:-150px;right:-100px;}
-.cta-section .section-title{max-width:600px;margin:0 auto 1rem;}
-.cta-section .section-sub{margin:0 auto 2.5rem;text-align:center;}
-.btn-iris{background:var(--iris);color:white;padding:1rem 2.5rem;border-radius:50px;font-weight:600;font-size:1rem;text-decoration:none;display:inline-block;transition:background 0.2s,transform 0.2s;box-shadow:0 8px 30px rgba(91,107,232,0.35);}
-.btn-iris:hover{background:var(--iris-dark);transform:translateY(-2px);}
-footer{background:var(--dark);padding:4rem 5% 2rem;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3rem;}
-.footer-brand{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:white;margin-bottom:1rem;}
-.footer-brand span{color:var(--iris-light);}
-.footer-tagline{color:rgba(255,255,255,0.45);font-size:0.88rem;line-height:1.65;font-weight:300;}
-.footer-col h4{color:white;font-size:0.85rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.2rem;}
-.footer-col ul{list-style:none;}
-.footer-col ul li{margin-bottom:0.65rem;}
-.footer-col ul li a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.88rem;transition:color 0.2s;}
-.footer-col ul li a:hover{color:var(--accent);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.35);font-size:0.8rem;}
-.modal-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(10,12,40,0.78);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1rem;}
-.modal-overlay.open{display:flex;}
-.modal{background:white;border-radius:24px;max-width:780px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn 0.3s ease;}
-@keyframes modalIn{from{opacity:0;transform:scale(0.95) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
-.modal-header{padding:2rem 2rem 0;position:relative;}
-.modal-close{position:absolute;top:1.2rem;right:1.2rem;background:var(--off-white);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--mid);transition:background 0.2s;}
-.modal-close:hover{background:var(--iris-pale);}
-.modal-tag{display:inline-block;background:var(--iris-pale);color:var(--iris-dark);font-size:0.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:50px;margin-bottom:0.75rem;}
-.modal-title{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:800;color:var(--dark);margin-bottom:0.5rem;}
-.modal-desc{color:var(--mid);font-size:0.95rem;line-height:1.7;font-weight:300;}
-.modal-body{padding:1.5rem 2rem 2rem;}
-.ba-label{font-size:0.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:1rem;}
-.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;}
-.ba-item{border-radius:16px;overflow:hidden;position:relative;}
-.ba-placeholder{width:100%;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:0.8rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;gap:0.6rem;}
-.ba-before .ba-placeholder{background:#f0ede8;color:#9a9080;}
-.ba-after .ba-placeholder{background:var(--iris-pale);color:var(--iris-dark);}
-.ba-tag{position:absolute;bottom:10px;left:10px;padding:0.3rem 0.75rem;border-radius:50px;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
-.ba-before .ba-tag{background:rgba(0,0,0,0.55);color:white;}
-.ba-after .ba-tag{background:var(--iris);color:white;}
-.modal-sms-btn{display:flex;align-items:center;justify-content:center;gap:0.75rem;width:100%;background:var(--iris);color:white;border:none;border-radius:50px;padding:1.1rem 2rem;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;box-shadow:0 8px 30px rgba(91,107,232,0.3);}
-.modal-sms-btn:hover{background:var(--iris-dark);transform:translateY(-2px);}
-.modal-phone-row{display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-top:0.75rem;color:var(--mid);font-size:0.85rem;}
-.modal-phone-row a{color:var(--iris);font-weight:500;text-decoration:none;}
-.modal-phone-row a:hover{text-decoration:underline;}
-@media(max-width:768px){.nav-links{display:none;}.stats-bar{grid-template-columns:repeat(2,1fr);}.services-grid{grid-template-columns:1fr;}.why{grid-template-columns:1fr;gap:3rem;}.testimonial-grid{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr;gap:2rem;}.paint-swatch-stack{display:none;}.ba-grid{grid-template-columns:1fr;}}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --iris:#5A67FF;
+    --iris-light:#8FA0FF;
+    --white:#ffffff;
+    --dark:#12172b;
+    --gray:#f4f7ff;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,#f8fbff 0%,#eef3ff 100%);
+    color:var(--dark);
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:999;
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(90,103,255,0.08);
+}
+
+.nav-container{
+    max-width:1300px;
+    margin:auto;
+    padding:20px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:1.6rem;
+    font-weight:800;
+    color:var(--iris);
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:var(--dark);
+    font-weight:600;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:var(--iris);
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:140px 8% 80px;
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:700px;
+    height:700px;
+    border-radius:50%;
+    background:radial-gradient(circle,var(--iris-light),transparent 70%);
+    top:-250px;
+    right:-250px;
+    opacity:0.25;
+}
+
+.hero-content{
+    max-width:750px;
+    z-index:2;
+}
+
+.badge{
+    display:inline-block;
+    padding:12px 20px;
+    border-radius:999px;
+    background:rgba(90,103,255,0.1);
+    color:var(--iris);
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:4.5rem;
+    line-height:1.05;
+    margin-bottom:25px;
+    font-weight:800;
+}
+
+.hero h1 span{
+    color:var(--iris);
+}
+
+.hero p{
+    font-size:1.15rem;
+    color:#5e6686;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:18px 32px;
+    border-radius:18px;
+    text-decoration:none;
+    font-weight:700;
+    transition:0.35s;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,var(--iris),#8795ff);
+    color:white;
+    box-shadow:0 18px 35px rgba(90,103,255,0.25);
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+}
+
+.btn-secondary{
+    background:white;
+    color:var(--iris);
+    border:2px solid rgba(90,103,255,0.12);
+}
+
+.btn-secondary:hover{
+    background:var(--gray);
+}
+
+/* SERVICES */
+
+.services{
+    padding:120px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#5f6683;
+    line-height:1.8;
+    max-width:700px;
+    margin:auto;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.service-card{
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(14px);
+    border-radius:28px;
+    padding:35px;
+    transition:0.35s;
+    border:1px solid rgba(255,255,255,0.9);
+    box-shadow:0 10px 30px rgba(0,0,0,0.04);
+    cursor:pointer;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 45px rgba(90,103,255,0.12);
+}
+
+.icon{
+    width:70px;
+    height:70px;
+    border-radius:20px;
+    background:linear-gradient(135deg,var(--iris),#8a97ff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:1.8rem;
+    margin-bottom:25px;
+}
+
+.service-card h3{
+    font-size:1.4rem;
+    margin-bottom:15px;
+}
+
+.service-card p{
+    color:#5f6683;
+    line-height:1.7;
+}
+
+.service-btn{
+    margin-top:22px;
+    width:100%;
+    border:none;
+    padding:15px;
+    border-radius:16px;
+    background:linear-gradient(135deg,var(--iris),#8795ff);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(90,103,255,0.2);
+}
+
+/* ABOUT */
+
+.about{
+    padding:120px 7%;
+}
+
+.about-box{
+    background:linear-gradient(135deg,#5A67FF,#8391ff);
+    border-radius:40px;
+    padding:70px;
+    color:white;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+    box-shadow:0 25px 60px rgba(90,103,255,0.25);
+}
+
+.about h2{
+    font-size:3rem;
+    margin-bottom:25px;
+}
+
+.about p{
+    line-height:1.9;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.stat{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.15);
+    padding:30px;
+    border-radius:24px;
+}
+
+.stat h3{
+    font-size:2rem;
+    margin-bottom:8px;
+}
+
+/* CONTACT */
+
+.contact{
+    padding:120px 7%;
+}
+
+.contact-box{
+    background:white;
+    border-radius:35px;
+    padding:70px;
+    text-align:center;
+    box-shadow:0 15px 45px rgba(0,0,0,0.05);
+}
+
+.contact h2{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.contact p{
+    color:#5f6683;
+    line-height:1.8;
+    max-width:700px;
+    margin:auto auto 40px;
+}
+
+.sms-main{
+    display:inline-block;
+    padding:20px 34px;
+    border-radius:18px;
+    background:linear-gradient(135deg,var(--iris),#8795ff);
+    color:white;
+    text-decoration:none;
+    font-weight:700;
+    box-shadow:0 15px 35px rgba(90,103,255,0.25);
+    transition:0.35s;
+}
+
+.sms-main:hover{
+    transform:translateY(-4px);
+}
+
+/* FOOTER */
+
+footer{
+    padding:40px;
+    text-align:center;
+    color:#6a718d;
+}
+
+/* MODALS */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:20px;
+}
+
+.modal-content{
+    background:white;
+    width:100%;
+    max-width:1000px;
+    border-radius:32px;
+    padding:40px;
+    position:relative;
+    animation:fadeUp 0.35s ease;
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:2rem;
+    cursor:pointer;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+    margin-top:30px;
+}
+
+.gallery-box{
+    background:#f4f7ff;
+    border-radius:24px;
+    overflow:hidden;
+    text-align:center;
+    padding-bottom:20px;
+}
+
+.gallery-box img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+}
+
+.gallery-box h4{
+    padding-top:18px;
+    font-size:1.2rem;
+}
+
+.sms-btn{
+    display:inline-block;
+    margin-top:35px;
+    padding:18px 30px;
+    border-radius:16px;
+    background:linear-gradient(135deg,var(--iris),#8795ff);
+    color:white;
+    text-decoration:none;
+    font-weight:700;
+    box-shadow:0 15px 35px rgba(90,103,255,0.2);
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .about-box{
+        grid-template-columns:1fr;
+        padding:45px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .modal-content{
+        padding:25px;
+    }
+
+}
+
 </style>
 </head>
+
 <body>
 
+<!-- NAV -->
+
 <nav>
-  <div class="logo">LGS <span>Painting</span></div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
-    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
-  </ul>
+    <div class="nav-container">
+        <div class="logo">LGS Painting Services</div>
+
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
 </nav>
 
+<!-- HERO -->
+
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-blob blob1"></div>
-  <div class="hero-blob blob2"></div>
-  <div class="hero-blob blob3"></div>
-  <div class="drips"><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div></div>
-  <div class="hero-content">
-    <div class="hero-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> Professional Painting Services</div>
-    <h1>Transform Your<br><em>Space</em> With Color</h1>
-    <p>LGS Painting Services delivers flawless finishes, on time and within budget. From interiors to exteriors, we treat every project like it's our own home.</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-primary">Get a Free Quote</a>
-      <a href="#services" class="btn-outline">Our Services</a>
+
+    <div class="hero-content">
+
+        <div class="badge">
+            Professional Painting & Surface Solutions
+        </div>
+
+        <h1>
+            Premium <span>Painting Services</span>
+            That Transform Homes
+        </h1>
+
+        <p>
+            LGS Painting Services provides professional interior and exterior painting,
+            cabinet refinishing, deck staining, wallpaper removal, and power washing
+            with high-end results and attention to detail.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a class="btn btn-primary"
+            href="sms:2037942276?body=Hi%20LGS%20Painting%20Services,%20I%20would%20like%20a%20free%20estimate.">
+            Get Free Estimate
+            </a>
+
+            <a href="#services" class="btn btn-secondary">
+            View Services
+            </a>
+
+        </div>
+
     </div>
-  </div>
+
 </section>
 
-<div class="stats-bar">
-  <div><div class="stat-num">500+</div><div class="stat-label">Projects Completed</div></div>
-  <div><div class="stat-num">12+</div><div class="stat-label">Years Experience</div></div>
-  <div><div class="stat-num">100%</div><div class="stat-label">Satisfaction Rate</div></div>
-  <div><div class="stat-num">5★</div><div class="stat-label">Average Rating</div></div>
-</div>
+<!-- SERVICES -->
 
 <section class="services" id="services">
-  <p class="section-label">What We Do</p>
-  <h2 class="section-title">Our Services</h2>
-  <p class="section-sub">From a single room refresh to a full exterior transformation — we handle it all with precision and care.</p>
-  <div class="services-grid">
-    <div class="service-card" onclick="openModal('interior')">
-      <div class="service-icon"><svg width="26" height="26" fill="none" stroke="#5B6BE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
-      <div class="service-name">Interior & Exterior Painting</div>
-      <div class="service-desc">Flawless coverage on walls, ceilings, trim, siding, and more using premium paints for a lasting finish.</div>
-      <div class="service-hint"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> View Before & After</div>
+
+    <div class="section-title">
+        <h2>Our Services</h2>
+        <p>
+            Click any service below to open before & after project galleries.
+        </p>
     </div>
-    <div class="service-card" onclick="openModal('cabinets')">
-      <div class="service-icon"><svg width="26" height="26" fill="none" stroke="#5B6BE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20M12 4v16"/></svg></div>
-      <div class="service-name">Cabinet Refinishing</div>
-      <div class="service-desc">Give your kitchen or bathroom a brand-new look. We sand, prime, and refinish to a smooth, durable coat.</div>
-      <div class="service-hint"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> View Before & After</div>
+
+    <div class="services-grid">
+
+        <div class="service-card" onclick="openModal('interiorModal')">
+            <div class="icon">🎨</div>
+            <h3>Interior Painting</h3>
+            <p>Modern smooth finishes with premium-quality paint.</p>
+            <button class="service-btn">View Before & After</button>
+        </div>
+
+        <div class="service-card" onclick="openModal('exteriorModal')">
+            <div class="icon">🏠</div>
+            <h3>Exterior Painting</h3>
+            <p>Protect and transform your home’s exterior appearance.</p>
+            <button class="service-btn">View Before & After</button>
+        </div>
+
+        <div class="service-card" onclick="openModal('powerModal')">
+            <div class="icon">💦</div>
+            <h3>Power Washing</h3>
+            <p>Deep cleaning for patios, siding, decks, and driveways.</p>
+            <button class="service-btn">View Before & After</button>
+        </div>
+
+        <div class="service-card" onclick="openModal('deckModal')">
+            <div class="icon">🪵</div>
+            <h3>Deck Staining</h3>
+            <p>Professional deck staining and wood restoration services.</p>
+            <button class="service-btn">View Before & After</button>
+        </div>
+
+        <div class="service-card" onclick="openModal('wallpaperModal')">
+            <div class="icon">🧱</div>
+            <h3>Wallpaper Removal</h3>
+            <p>Clean wallpaper removal with smooth wall preparation.</p>
+            <button class="service-btn">View Before & After</button>
+        </div>
+
+        <div class="service-card" onclick="openModal('cabinetModal')">
+            <div class="icon">🛠️</div>
+            <h3>Cabinet Refinishing</h3>
+            <p>Factory-style cabinet refinishing for kitchens & baths.</p>
+            <button class="service-btn">View Before & After</button>
+        </div>
+
     </div>
-    <div class="service-card" onclick="openModal('deck')">
-      <div class="service-icon"><svg width="26" height="26" fill="none" stroke="#5B6BE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg></div>
-      <div class="service-name">Deck Staining</div>
-      <div class="service-desc">Protect and beautify your outdoor deck with professional-grade stains and sealants built to last.</div>
-      <div class="service-hint"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> View Before & After</div>
-    </div>
-    <div class="service-card" onclick="openModal('powerwash')">
-      <div class="service-icon"><svg width="26" height="26" fill="none" stroke="#5B6BE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-      <div class="service-name">Power Washing</div>
-      <div class="service-desc">Blast away years of dirt, mold, and grime from driveways, patios, siding, and fences.</div>
-      <div class="service-hint"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> View Before & After</div>
-    </div>
-    <div class="service-card" onclick="openModal('wallpaper')">
-      <div class="service-icon"><svg width="26" height="26" fill="none" stroke="#5B6BE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
-      <div class="service-name">Wallpaper Removal</div>
-      <div class="service-desc">We carefully remove every layer and prepare walls to a perfectly smooth, paint-ready surface.</div>
-      <div class="service-hint"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> View Before & After</div>
-    </div>
-    <div class="service-card cta-card" onclick="sendSMS()">
-      <div class="service-icon" style="background:rgba(255,255,255,0.15);"><svg width="26" height="26" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-      <div class="service-name">Ready to Start?</div>
-      <div class="service-desc">Get a free, no-obligation estimate. We assess the scope and deliver a clear, competitive quote fast.</div>
-      <span class="cta-card-btn">Text Us for a Free Quote →</span>
-    </div>
-  </div>
+
 </section>
 
-<section class="why" id="why">
-  <div class="why-visual">
-    <div class="paint-swatch-stack">
-      <div class="swatch swatch-1"></div>
-      <div class="swatch swatch-2"></div>
-      <div class="swatch swatch-3"></div>
-      <div class="swatch swatch-4"></div>
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <div class="about-box">
+
+        <div>
+            <h2>Why Choose LGS?</h2>
+
+            <p>
+                We focus on premium craftsmanship, clean finishes,
+                and professional service from start to finish.
+                Every project is completed with precision,
+                attention to detail, and high-quality materials.
+            </p>
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>100%</h3>
+                <p>Customer Satisfaction</p>
+            </div>
+
+            <div class="stat">
+                <h3>5★</h3>
+                <p>Professional Quality</p>
+            </div>
+
+            <div class="stat">
+                <h3>Fast</h3>
+                <p>Reliable Service</p>
+            </div>
+
+            <div class="stat">
+                <h3>Clean</h3>
+                <p>Detailed Finishes</p>
+            </div>
+
+        </div>
+
     </div>
-  </div>
-  <div>
-    <p class="section-label">Why Choose Us</p>
-    <h2 class="section-title">Quality You Can<br>See & Touch</h2>
-    <p class="section-sub">LGS Painting brings craftsmanship, reliability, and a passion for detail to every project.</p>
-    <div class="why-points">
-      <div class="why-point"><div class="why-dot"></div><div><div class="why-point-title">Licensed & Insured</div><div class="why-point-text">Full coverage on every job — protecting you, your property, and our team throughout the entire project.</div></div></div>
-      <div class="why-point"><div class="why-dot"></div><div><div class="why-point-title">Premium Materials Only</div><div class="why-point-text">We use top-tier paints and finishes from trusted brands — no shortcuts, ever. Your investment deserves to last.</div></div></div>
-      <div class="why-point"><div class="why-dot"></div><div><div class="why-point-title">Clean, Respectful Crew</div><div class="why-point-text">We treat your home like our own — proper masking, careful prep, and thorough cleanup when the job is done.</div></div></div>
-      <div class="why-point"><div class="why-dot"></div><div><div class="why-point-title">On-Time, Every Time</div><div class="why-point-text">We give you a clear timeline and stick to it. No ghost crews — reliable, professional service start to finish.</div></div></div>
-    </div>
-  </div>
+
 </section>
 
-<section class="testimonials" id="testimonials">
-  <p class="section-label">Client Reviews</p>
-  <h2 class="section-title">What Our Clients Say</h2>
-  <div class="testimonial-grid">
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <div class="testimonial-text">"LGS transformed our entire first floor. The prep work was meticulous and the finish is absolutely flawless. Couldn't be happier — and they finished a day early!"</div>
-      <div class="testimonial-author"><div class="author-avatar" style="background:linear-gradient(135deg,#5B6BE8,#3A4BC7);">MR</div><div><div class="author-name">Maria R.</div><div class="author-loc">Homeowner, Springfield</div></div></div>
-    </div>
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <div class="testimonial-text">"Had our deck stained and power washed. The difference is night and day — looks brand new. LGS was professional from quote to cleanup. Highly recommend!"</div>
-      <div class="testimonial-author"><div class="author-avatar" style="background:linear-gradient(135deg,#7C8EF5,#5B6BE8);">TK</div><div><div class="author-name">Tom K.</div><div class="author-loc">Homeowner, Riverside</div></div></div>
-    </div>
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <div class="testimonial-text">"Our kitchen cabinets look like they came from a showroom. LGS took their time with prep and it really shows. Incredible value for the quality delivered."</div>
-      <div class="testimonial-author"><div class="author-avatar" style="background:linear-gradient(135deg,#3A4BC7,#1A1D3A);">JL</div><div><div class="author-name">Jennifer L.</div><div class="author-loc">Homeowner, Lakewood</div></div></div>
-    </div>
-  </div>
-</section>
+<!-- CONTACT -->
 
-<section class="cta-section" id="contact">
-  <div class="cta-bg-circle cta-c1"></div>
-  <div class="cta-bg-circle cta-c2"></div>
-  <div style="position:relative;z-index:2;">
-    <p class="section-label">Get Started Today</p>
-    <h2 class="section-title">Ready for a Fresh Coat?</h2>
-    <p class="section-sub">Call or message us for a free, no-pressure estimate. We'll assess your project and provide a clear quote — usually within 24 hours.</p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="tel:+12037942276" class="btn-iris">📞 Call (203) 794-2276</a>
-      <a href="#" onclick="sendSMS();return false;" style="background:white;color:var(--iris-dark);padding:1rem 2.5rem;border-radius:50px;font-weight:600;font-size:1rem;text-decoration:none;box-shadow:0 4px 20px rgba(91,107,232,0.15);display:inline-block;transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">💬 Text for a Free Quote</a>
+<section class="contact" id="contact">
+
+    <div class="contact-box">
+
+        <h2>Get A Free Estimate</h2>
+
+        <p>
+            Ready to transform your property?
+            Send us a quick text message today for a free quote.
+        </p>
+
+        <a class="sms-main"
+        href="sms:2037942276?body=Hi%20LGS%20Painting%20Services,%20I%20would%20like%20a%20free%20estimate.">
+        Text For Free Estimate
+        </a>
+
     </div>
-  </div>
+
 </section>
 
 <footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">LGS <span>Painting</span> Services</div>
-      <div class="footer-tagline">Professional painting services delivered with craftsmanship, care, and integrity. Your home deserves the best.</div>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="#">Interior Painting</a></li>
-        <li><a href="#">Exterior Painting</a></li>
-        <li><a href="#">Cabinet Refinishing</a></li>
-        <li><a href="#">Deck Staining</a></li>
-        <li><a href="#">Power Washing</a></li>
-        <li><a href="#">Wallpaper Removal</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="tel:+12037942276">(203) 794-2276</a></li>
-        <li><a href="#" onclick="sendSMS();return false;">Text for a Quote</a></li>
-        <li><a href="#services">Our Services</a></li>
-        <li><a href="#why">Why LGS</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 LGS Painting Services. All rights reserved.</span>
-    <span>Licensed & Insured</span>
-  </div>
+    © 2026 LGS Painting Services — All Rights Reserved
 </footer>
 
-<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
-  <div class="modal" id="modalBox">
-    <div class="modal-header">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <div class="modal-tag" id="modalTag"></div>
-      <div class="modal-title" id="modalTitle"></div>
-      <div class="modal-desc" id="modalDesc"></div>
-    </div>
-    <div class="modal-body">
-      <div class="ba-label">Before & After</div>
-      <div class="ba-grid">
-        <div class="ba-item ba-before">
-          <div class="ba-placeholder" id="baBeforeEl">
-            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            Add Your Before Photo
-          </div>
-          <span class="ba-tag">BEFORE</span>
+<!-- MODALS -->
+
+<!-- INTERIOR -->
+
+<div class="modal" id="interiorModal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal('interiorModal')">&times;</span>
+
+        <h2>Interior Painting</h2>
+
+        <div class="gallery">
+
+            <div class="gallery-box">
+                <img src="before-interior.jpg">
+                <h4>Before</h4>
+            </div>
+
+            <div class="gallery-box">
+                <img src="after-interior.jpg">
+                <h4>After</h4>
+            </div>
+
         </div>
-        <div class="ba-item ba-after">
-          <div class="ba-placeholder" id="baAfterEl">
-            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            Add Your After Photo
-          </div>
-          <span class="ba-tag">AFTER</span>
-        </div>
-      </div>
-      <a href="#" class="modal-sms-btn" id="modalSmsBtn" onclick="sendServiceSMS(event)">
-        <svg width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        Get a Free Estimate — Text Us Now
-      </a>
-      <div class="modal-phone-row">Or call us directly at <a href="tel:+12037942276">(203) 794-2276</a></div>
+
+        <a class="sms-btn"
+        href="sms:2037942276?body=Hi%20LGS%20Painting%20Services,%20I%20would%20like%20a%20free%20estimate%20for%20interior%20painting.">
+        Get Free Estimate
+        </a>
+
     </div>
-  </div>
 </div>
 
+<!-- EXTERIOR -->
+
+<div class="modal" id="exteriorModal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal('exteriorModal')">&times;</span>
+
+        <h2>Exterior Painting</h2>
+
+        <div class="gallery">
+
+            <div class="gallery-box">
+                <img src="before-exterior.jpg">
+                <h4>Before</h4>
+            </div>
+
+            <div class="gallery-box">
+                <img src="after-exterior.jpg">
+                <h4>After</h4>
+            </div>
+
+        </div>
+
+        <a class="sms-btn"
+        href="sms:2037942276?body=Hi%20LGS%20Painting%20Services,%20I%20would%20like%20a%20free%20estimate%20for%20exterior%20painting.">
+        Get Free Estimate
+        </a>
+
+    </div>
+</div>
+
+<!-- POWER -->
+
+<div class="modal" id="powerModal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal('powerModal')">&times;</span>
+
+        <h2>Power Washing</h2>
+
+        <div class="gallery">
+
+            <div class="gallery-box">
+                <img src="before-power.jpg">
+                <h4>Before</h4>
+            </div>
+
+            <div class="gallery-box">
+                <img src="after-power.jpg">
+                <h4>After</h4>
+            </div>
+
+        </div>
+
+        <a class="sms-btn"
+        href="sms:2037942276?body=Hi%20LGS%20Painting%20Services,%20I%20would%20like%20a%20free%20estimate%20for%20power%20washing.">
+        Get Free Estimate
+        </a>
+
+    </div>
+</div>
+
+<!-- DECK -->
+
+<div class="modal" id="deckModal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal('deckModal')">&times;</span>
+
+        <h2>Deck Staining</h2>
+
+        <div class="gallery">
+
+            <div class="gallery-box">
+                <img src="before-deck.jpg">
+                <h4>Before</h4>
+            </div>
+
+            <div class="gallery-box">
+                <img src="after-deck.jpg">
+                <h4>After</h4>
+            </div>
+
+        </div>
+
+        <a class="sms-btn"
+        href="sms:2037942276?body=Hi%20LGS%20Painting%20Services,%20I%20would%20like%20a%20free%20estimate%20for%20deck%20staining.">
+        Get Free Estimate
+        </a>
+
+    </div>
+</div>
+
+<!-- WALLPAPER -->
+
+<div class="modal" id="wallpaperModal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal('wallpaperModal')">&times;</span>
+
+        <h2>Wallpaper Removal</h2>
+
+        <div class="gallery">
+
+            <div class="gallery-box">
+                <img src="before-wallpaper.jpg">
+                <h4>Before</h4>
+            </div>
+
+            <div class="gallery-box">
+                <img src="after-wallpaper.jpg">
+                <h4>After</h4>
+            </div>
+
+        </div>
+
+        <a class="sms-btn"
+        href="sms:2037942276?body=Hi%20LGS%20Painting%20Services,%20I%20would%20like%20a%20free%20estimate%20for%20wallpaper%20removal.">
+        Get Free Estimate
+        </a>
+
+    </div>
+</div>
+
+<!-- CABINETS -->
+
+<div class="modal" id="cabinetModal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal('cabinetModal')">&times;</span>
+
+        <h2>Cabinet Refinishing</h2>
+
+        <div class="gallery">
+
+            <div class="gallery-box">
+                <img src="before-cabinet.jpg">
+                <h4>Before</h4>
+            </div>
+
+            <div class="gallery-box">
+                <img src="after-cabinet.jpg">
+                <h4>After</h4>
+            </div>
+
+        </div>
+
+        <a class="sms-btn"
+        href="sms:2037942276?body=Hi%20LGS%20Painting%20Services,%20I%20would%20like%20a%20free%20estimate%20for%20cabinet%20refinishing.">
+        Get Free Estimate
+        </a>
+
+    </div>
+</div>
+
+<!-- JS -->
+
 <script>
-var currentService='';
-var services={
-  interior:{tag:'Interior & Exterior',title:'Interior & Exterior Painting',desc:'Flawless coverage on walls, ceilings, trim, siding, and more. We prep every surface meticulously and use only premium paints for a finish that lasts years.',sms:"Hi LGS Painting! I'm interested in a free estimate for Interior/Exterior Painting. Please reach out!"},
-  cabinets:{tag:'Cabinet Refinishing',title:'Cabinet Refinishing',desc:'Give your kitchen or bathroom a brand-new look without replacement costs. We sand, prime, and refinish every cabinet to a perfectly smooth, durable coat.',sms:"Hi LGS Painting! I'm interested in a free estimate for Cabinet Refinishing. Please reach out!"},
-  deck:{tag:'Deck Staining',title:'Deck Staining',desc:'Protect and beautify your outdoor deck with professional-grade stains and sealants that stand up to weather, UV rays, and heavy use season after season.',sms:"Hi LGS Painting! I'm interested in a free estimate for Deck Staining. Please reach out!"},
-  powerwash:{tag:'Power Washing',title:'Power Washing',desc:'Blast away years of dirt, mold, and grime from driveways, patios, siding, and fences — the essential first step before any exterior painting project.',sms:"Hi LGS Painting! I'm interested in a free estimate for Power Washing. Please reach out!"},
-  wallpaper:{tag:'Wallpaper Removal',title:'Wallpaper Removal',desc:'Old wallpaper removed cleanly and carefully. We strip every layer and prepare your walls to a perfectly smooth, paint-ready surface with zero damage.',sms:"Hi LGS Painting! I'm interested in a free estimate for Wallpaper Removal. Please reach out!"}
-};
-function openModal(key){
-  currentService=key;
-  var s=services[key];
-  document.getElementById('modalTag').textContent=s.tag;
-  document.getElementById('modalTitle').textContent=s.title;
-  document.getElementById('modalDesc').textContent=s.desc;
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
+
+function openModal(id){
+    document.getElementById(id).style.display = "flex";
 }
-function closeModal(){
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow='';
+
+function closeModal(id){
+    document.getElementById(id).style.display = "none";
 }
-function handleOverlayClick(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
-function sendServiceSMS(e){
-  e.preventDefault();
-  window.location.href='sms:+12037942276?body='+encodeURIComponent(services[currentService].sms);
+
+window.onclick = function(event){
+
+    document.querySelectorAll('.modal').forEach(modal=>{
+
+        if(event.target === modal){
+            modal.style.display = "none";
+        }
+
+    });
+
 }
-function sendSMS(){
-  window.location.href='sms:+12037942276?body='+encodeURIComponent("Hi LGS Painting! I'd like to get a free estimate. Please reach out!");
-}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
 </script>
+
 </body>
 </html>
